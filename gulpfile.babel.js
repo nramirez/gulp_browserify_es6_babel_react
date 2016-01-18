@@ -16,10 +16,7 @@ const paths = {
   dest: './app',
   bundle: 'bundle.js',
   bundleDest: './app/public/js',
-  publicEntries: [
-    './public/js/index',
-    './public/js/components/test'
-  ]
+  mainJs: './public/js/index'
 };
 //Catch the server instance
 let express;
@@ -72,7 +69,7 @@ gulp.task('babel', cb => {
 //Transform client ES6 to ES5
 //With react support
 gulp.task('client', cb => {
-    return browserify({entries: paths.publicEntries, extensions: ['.jsx'], debug: true})
+    return browserify({entries: paths.mainJs, extensions: ['.jsx'], debug: true})
         .transform('babelify', {presets: ['es2015', 'react']})
         .bundle()
         .pipe(source(paths.bundle))
