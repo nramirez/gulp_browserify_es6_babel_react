@@ -4,6 +4,7 @@ import morgan from 'morgan';
 import exphbs from 'express-handlebars';
 
 const app = express();
+const PORT = 8000;
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -13,8 +14,8 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-app.listen(8000, () => {
-  console.log('Server is listening');
+app.listen(PORT, () => {
+  console.log('Server is listening on port: ', PORT);
 });
 
 //routes
